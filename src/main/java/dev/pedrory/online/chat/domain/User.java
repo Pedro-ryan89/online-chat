@@ -9,10 +9,10 @@ public class User {
     private String name;
     private String currentRoomId;
 
-    public User(String name, String currentRoomId) {
+    public User(String name) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
-        this.currentRoomId = currentRoomId;
+        this.currentRoomId = null;
     }
 
     public String getName() {return this.name;}
