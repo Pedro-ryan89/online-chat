@@ -4,10 +4,12 @@
  */
 package dev.pedrory.online.chat.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
@@ -17,24 +19,24 @@ public class Room {
     private final String roomId;
     private final String roomName;
     
-    private final List<String> userIds;
+    private final Set<String> userIds;
     private final List<String> messageIds;
     
     public Room(String roomName){
         this.roomName = roomName;
         this.roomId = UUID.randomUUID().toString();
-        this.messageIds = new ArrayList<>();
-        this.userIds = new ArrayList<>();
+        this.messageIds = new CopyOnWriteArrayList<>();
+        this.userIds = new ConcurrentSkipListSet<>();
     }
     
-    public List<String> getuserIds(){return Collections.unmodifiableList(userIds);}
+    public Set<String> getuserIds(){return Collections.unmodifiableSet(userIds);}
     public List<String>getmessageIds(){return Collections.unmodifiableList(messageIds);}
     public String getroomId(){return roomId;}
     public String getroomName(){return roomName;}
     
     
     public void addUser(String userId){
-        if (userId != null && !userIds.contains(userId)){
+        if (userId != null){
             userIds.add(userId);
             
         }
@@ -45,7 +47,7 @@ public class Room {
     }
     
     public void addMessage(String messageId){
-        if (messageId !=  null){
+        if (messageId !=  null && !messageId.isBlank()){
             messageIds.add(messageId);
         }
     }
