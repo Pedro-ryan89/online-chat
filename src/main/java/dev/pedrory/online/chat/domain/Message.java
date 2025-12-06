@@ -13,9 +13,9 @@ public class Message {
     private final MessageType type;
 
     //User esta null,lembrar de fazer uma validação futuramente para evitar quebra
-    public Message(User user,String content, MessageType type) {
+    public Message(String roomId,User user,String content, MessageType type) {
         this.id = UUID.randomUUID().toString();
-        this.roomId = UUID.randomUUID().toString();          
+        this.roomId = roomId;          
         this.userId = user.getId();         
         this.content = content;
         this.type = type;              
