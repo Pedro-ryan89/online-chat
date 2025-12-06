@@ -1,0 +1,24 @@
+# Maven build directory
+target/
+
+# Compiled classes
+*.class
+
+# Maven specific files
+.mvn/
+
+# IntelliJ / JetBrains
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+
+# Backup files
+*~
